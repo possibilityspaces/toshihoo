@@ -1,48 +1,49 @@
 # toshihoo.com
 
-Rebuild of [toshihoo.com](https://toshihoo.com) — the portfolio of Toshi Anders
-Hoo — as a plain static site. No build step, no framework, no dependencies:
-just HTML and one stylesheet.
+The portfolio site of Toshi Anders Hoo, rebuilt as a plain static site from the
+WordPress export of the original toshihoo.com. No CMS, no build step, no
+dependencies: just HTML and one stylesheet.
 
-The previous site was a WordPress install on Bluehost. This rebuild preserves
-the original information architecture and URL paths so existing links keep
-working:
+All text, page structure, video embeds and image references come directly from
+the WordPress export (`toshiandershoo.WordPress.20260714.xml`). Original URL
+paths are preserved so existing links keep working.
 
 | Path | Page |
 | --- | --- |
-| `/` | Home — "Art, work and musings" |
-| `/work/` | Work overview + research & prototyping projects |
-| `/production/` | Immersive experiences, film and live events |
-| `/consulting/` | Consulting services and advisory clients |
-| `/artwork/` | Art practice |
-| `/contact/` | Contact links |
+| `/` | Home — full-bleed photo statements ("Seeking improbable moments of wonder") |
+| `/work/` | Work overview (Production / Consulting / Art) |
+| `/production/` | Production projects (Kepler, FireEye, Bella Gaia, Earth Portal, …) |
+| `/consulting/` | Consulting services (Kurzweil, Project TimeLab, Museum of the Future, …) |
+| `/artwork/` | Art projects (Evolution of Fire, Passages, Water Double, …) |
+| `/blog/` | Blog index (8 published posts, each at its original slug, e.g. `/evolution-of-a-card/`) |
+| `/contact/` | Contact |
 
 ## Editing
 
 Every page is a standalone `index.html` in its folder. Shared styles live in
-`css/style.css` (dark/light via `prefers-color-scheme`). Edit the HTML, reload
-the browser — that's the whole workflow.
+`css/style.css`. Edit the HTML, reload the browser — that's the whole workflow.
 
-Preview locally with any static server, e.g.:
+Preview locally with any static server:
 
 ```sh
 python3 -m http.server 8000
 # open http://localhost:8000
 ```
 
+All internal links are **relative**, so the site works at a domain root
+(toshihoo.com) and under a subpath (GitHub Pages project site) alike.
+
+## Media
+
+Images currently hotlink to the original server
+(`toshihoo.com/wp-content/uploads/…`). `media-manifest.json` lists every
+referenced file. **Before canceling Bluehost hosting**, download
+`wp-content/uploads`, commit the needed files under `images/`, and rewrite the
+URLs (a find/replace from the manifest). Until then the site depends on the
+old host staying up. Video embeds are Vimeo/YouTube and are independent of
+Bluehost.
+
 ## Deploying
 
-Designed for Vercel (`vercel.json` keeps WordPress-style trailing slashes),
-but works on any static host including GitHub Pages. On Vercel: import this
-repo, no build command, output directory is the repo root.
-
-## Still to restore
-
-The original site's media (video embeds, image galleries, blog posts such as
-"Evolution of a Business Card" and the Lytro posts) could not be recovered
-from the live site, which is currently suspended, or from web archives. Once
-the Bluehost/WordPress backup (export + `wp-content/uploads`) is in hand:
-
-- [ ] Add images/video to `/production/` and `/artwork/` (placeholders are marked in the HTML)
-- [ ] Restore blog posts and the `/category/ai/` + `/category/fulldome/` archives if wanted
-- [ ] Verify text against the WordPress export and correct any drift
+Works on GitHub Pages (already live) and Vercel (`vercel.json` keeps
+WordPress-style trailing slashes) — no build command, repo root as output.
