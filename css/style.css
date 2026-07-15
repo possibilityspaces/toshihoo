@@ -239,21 +239,26 @@ ol {
   margin: 0;
 }
 
+.statement,
+.banner .fancy {
+  gap: 0;
+}
+
 .statement::before,
 .statement::after,
 .banner .fancy::before,
 .banner .fancy::after {
   content: "";
   flex: 1;
-  height: 0.9em;
-  background-image: radial-gradient(rgba(255, 255, 255, 0.95) 1.5px, transparent 1.6px);
-  background-size: 7px 7px;
+  height: 10px;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.92) 1px, transparent 1.3px);
+  background-size: 4px 3.3px;
 }
 
 .statement > span,
 .banner .fancy > span {
-  background: rgba(255, 255, 255, 0.92);
-  padding: 0.3em 0.6em;
+  background: rgba(255, 255, 255, 0.96);
+  padding: 0.18em 0.6em;
 }
 
 /* fancy titles outside banners keep the plain look */
