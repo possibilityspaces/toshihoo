@@ -201,19 +201,14 @@ ol {
 /* ---------- Full-bleed photo banners (home, contact) ---------- */
 
 .banner {
-  min-height: 70vh;
+  min-height: clamp(18rem, 32vw, 28rem);
   background-size: cover;
-  background-position: center;
+  background-position: center 35%;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 4rem 1.25rem;
-}
-
-@media (min-width: 60rem) {
-  .banner {
-    background-attachment: fixed; /* parallax feel of the original */
-  }
+  padding: 3rem 1.25rem;
+  margin: 2.5rem 0;
 }
 
 .banner-inner {
